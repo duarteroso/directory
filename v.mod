@@ -1,7 +1,7 @@
 Module {
-	name: 'vdirectory'
+	name: 'directory'
 	description: 'Directory handler module'
-	version: '0.1.0'
+	version: '1.0.0'
 	author: 'duarteroso'
 	license: 'BSD-2-Clause'
 	dependencies: []

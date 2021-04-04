@@ -1,4 +1,4 @@
-module vidirectory
+module directory
 
 import os
 

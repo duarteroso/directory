@@ -1,4 +1,4 @@
-module vidirectory
+module directory
 
 fn init() {
 }

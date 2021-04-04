@@ -1,4 +1,4 @@
-module vidirectory
+module directory
 
 fn test_entry() {
 	entry := create_entry(@FILE) or {
