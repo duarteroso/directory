@@ -1,0 +1,4 @@
+module vidirectory
+
+fn init() {
+}
