@@ -23,7 +23,7 @@ pub fn get_directories(path string) ?[]Entry {
 	mut dirs := []Entry{}
 	for elt in list {
 		if os.is_dir(elt) {
-			dirs << Entry {
+			dirs << Entry{
 				name: elt
 				path: path
 			}
@@ -90,7 +90,7 @@ pub fn get_all_files(path string) ?[]Entry {
 			files << entry
 		} else if entry.is_directory() {
 			files << get_all_files(entry.fullpath()) ?
-		} 
+		}
 	}
 	//
 	return files

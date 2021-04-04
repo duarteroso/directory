@@ -3,16 +3,14 @@ module vidirectory
 import os
 
 // Entry represents an entry in a file system
-pub struct Entry{
+pub struct Entry {
 mut:
 	name string
 	path string
 }
 
 fn create_entry(fullpath string) ?Entry {
-	index := fullpath.last_index('/') or {
-		return error('failed to create entry $fullpath')
-	}
+	index := fullpath.last_index('/') or { return error('failed to create entry $fullpath') }
 	//
 	return Entry{
 		name: fullpath.substr(index + 1, fullpath.len)
@@ -47,9 +45,7 @@ pub fn (e &Entry) is_directory() bool {
 
 // extension of entry, empty if a directory or unknown
 pub fn (e &Entry) extension() string {
-	index := e.name.last_index('.') or {
-		return 'none'
-	}
+	index := e.name.last_index('.') or { return 'none' }
 	//
 	return e.name.substr(index + 1, e.name.len)
 }

@@ -1,6 +1,6 @@
 module vidirectory
 
-import os 
+import os
 
 fn test_create_delete() {
 	mut path := '/tmp/v/dir_test'
@@ -22,7 +22,7 @@ fn test_exists() {
 
 fn test_get_files() {
 	path := get_parent(@FILE)
-	files := get_files(path) or { 
+	files := get_files(path) or {
 		println(err)
 		assert false
 		return
@@ -59,7 +59,7 @@ fn test_get_all_files() {
 fn test_get_directories() {
 	path := get_parent(@FILE)
 	dirs := get_directories(path) or {
-		println(err) 
+		println(err)
 		assert false
 		return
 	}
@@ -153,8 +153,12 @@ fn test_move_file() {
 	//
 	create(a) or { assert false }
 	os.create(b) or { assert false }
-	move(a, b) or { /* expected */ }
-	move(b, a) or { /* expected */ }
+	move(a, b) or {
+		// expected
+	}
+	move(b, a) or {
+		// expected
+	}
 	assert exists(a)
 	//
 	delete(a) or { assert false }
