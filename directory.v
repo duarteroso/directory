@@ -141,7 +141,7 @@ pub fn set_current_directory(path string) ? {
 		return error('$path does not exist')
 	}
 	//
-	os.chdir(path)
+	os.chdir(path) or { return error('$err') }
 }
 
 // get_current_directory returns the current directory
