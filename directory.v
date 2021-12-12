@@ -17,6 +17,7 @@ pub fn exists(path string) bool {
 	return os.is_dir(path)
 }
 
+// get_directories returns all directories under path, excluding files
 pub fn get_directories(path string) ?[]Entry {
 	list := os.ls(path) or { return error('failed to list: $path') }
 	//
