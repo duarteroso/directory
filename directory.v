@@ -3,12 +3,15 @@ module directory
 import os
 
 // create the complete hierarchy of path
-pub fn create(path string) ! {
+pub fn create_directory(path string) ! {
 	os.mkdir_all(path) or { return error('failed to create directory ${path}') }
 }
 
 // delete recursively the content of path
-pub fn delete(path string) ! {
+pub fn delete_directory(path string) ! {
+	if os.is_dir(path) == false {
+		return
+	}
 	os.rmdir_all(path) or { return error('failed to delete directory ${path}') }
 }
 

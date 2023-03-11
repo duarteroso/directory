@@ -2,16 +2,16 @@ module directory
 
 import os
 
-fn test_create_delete() {
+fn test_create_delete_directory() {
 	mut path := '/tmp/v/dir_test'
-	create(path) or { println(err) }
+	create_directory(path) or { println(err) }
 	assert exists(path)
-	delete(path) or { println(err) }
+	delete_directory(path) or { println(err) }
 	//
 	path = '/tmp/v/dir_test/'
-	create(path) or { println(err) }
+	create_directory(path) or { println(err) }
 	assert exists(path)
-	delete(path) or { println(err) }
+	delete_directory(path) or { println(err) }
 }
 
 fn test_exists() {
@@ -133,25 +133,25 @@ fn test_move_dir() {
 	b := '/tmp/b'
 	c := '/tmp/c'
 	//
-	create(a) or { assert false }
+	create_directory(a) or { assert false }
 	move(a, b) or { assert false }
 	assert exists(a) == false
 	//
-	create(c) or { assert false }
+	create_directory(c) or { assert false }
 	//
 	move(b, c) or {
 		// expected
 	}
 	//
-	delete(b) or { assert false }
-	delete(c) or { assert false }
+	delete_directory(b) or { assert false }
+	delete_directory(c) or { assert false }
 }
 
 fn test_move_file() {
 	a := '/tmp/a'
 	b := '/tmp/b.v'
 	//
-	create(a) or { assert false }
+	create_directory(a) or { assert false }
 	os.create(b) or { assert false }
 	move(a, b) or {
 		// expected
@@ -161,7 +161,7 @@ fn test_move_file() {
 	}
 	assert exists(a)
 	//
-	delete(a) or { assert false }
+	delete_directory(a) or { assert false }
 	os.rm(b) or { assert false }
 }
 
@@ -169,13 +169,13 @@ fn test_move_dir_to_file() {
 	a := '/tmp/a'
 	b := @FILE
 	//
-	create(a) or { assert false }
+	create_directory(a) or { assert false }
 	move(a, b) or {
 		// expected
 	}
 	assert exists(a)
 	//
-	delete(a) or { assert false }
+	delete_directory(a) or { assert false }
 }
 
 fn test_current_directoy() {
