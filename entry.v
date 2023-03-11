@@ -9,8 +9,8 @@ mut:
 	path string
 }
 
-fn create_entry(fullpath string) ?Entry {
-	index := fullpath.last_index('/') or { return error('failed to create entry $fullpath') }
+fn create_entry(fullpath string) !Entry {
+	index := fullpath.last_index('/') or { return error('failed to create entry ${fullpath}') }
 	//
 	return Entry{
 		name: fullpath.substr(index + 1, fullpath.len)
@@ -30,7 +30,7 @@ pub fn (e &Entry) path() string {
 
 // fullpath of Entry
 pub fn (e &Entry) fullpath() string {
-	return '$e.path/$e.name'
+	return '${e.path}/${e.name}'
 }
 
 // is_file returns true if entry is a file
