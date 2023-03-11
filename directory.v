@@ -23,7 +23,7 @@ pub fn get_directories(path string) ![]Entry {
 	//
 	mut dirs := []Entry{}
 	for elt in list {
-		if os.is_dir(elt) {
+		if os.is_dir('${path}/${elt}') {
 			dirs << Entry{
 				name: elt
 				path: path
@@ -40,7 +40,7 @@ pub fn get_files(path string) ![]Entry {
 	//
 	mut files := []Entry{}
 	for elt in list {
-		if os.is_file(elt) {
+		if os.is_file('${path}/${elt}') {
 			files << Entry{
 				name: elt
 				path: path
