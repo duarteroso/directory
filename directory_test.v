@@ -182,7 +182,13 @@ fn test_current_directoy() {
 	cd := get_parent(@FILE)
 	assert cd == get_current_directory()
 	//
-	tmp := '/tmp'
+	tmp := $if linux {
+		'/tmp'
+	} $else $if macos {
+		'/private/tmp'
+	} $else {
+		''
+	}
 	set_current_directory(tmp) or { assert false }
 	assert tmp == get_current_directory()
 }
